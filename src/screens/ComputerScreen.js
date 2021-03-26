@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGameManagerContext } from "../context/GameManagerContext";
-import { PLAYERS } from "../context/GameManagerContext";
 import { findLastWord } from "../utils/FindLastWord";
 
 const SpeechSynth = window.speechSynthesis;
@@ -8,27 +7,28 @@ const computerSpeak = new SpeechSynthesisUtterance();
 computerSpeak.lang = "tr-TR";
 
 const ComputerScreen = () => {
-  const {
-    setWhoIsTurn,
-    setCurrentWord,
-    currentWord,
-    spokenWords,
-  } = useGameManagerContext();
+  const { currentWord, spokenWords, changeTurn } = useGameManagerContext();
+
+  const computerIsPlayed = useRef(false);
 
   useEffect(() => {
+    if (computerIsPlayed.current) return;
+    computerIsPlayed.current = true;
+
     const foundWord = findLastWord(currentWord, spokenWords);
+    console.log(`{comp} : ${foundWord}`);
 
     computerSpeak.text = foundWord;
     SpeechSynth.speak(computerSpeak);
 
-    computerSpeak.onend = function () {
-      console.log(`{comp} : ${foundWord}`);
-
-      setCurrentWord(foundWord);
-      setWhoIsTurn(PLAYERS.User);
-      spokenWords.current.push(foundWord);
+    computerSpeak.onend = () => {
+      changeTurn(foundWord);
     };
-  }, [currentWord, setWhoIsTurn, setCurrentWord, spokenWords]);
+
+    return () => {
+      SpeechSynth.cancel();
+    };
+  }, [currentWord, changeTurn, spokenWords]);
 
   return <div>Compt screen</div>;
 };

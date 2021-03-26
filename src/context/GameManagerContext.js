@@ -10,6 +10,11 @@ export const GameManagerProvider = ({ children }) => {
 
   const [whoIsTurn, setWhoIsTurn] = useState(PLAYERS.Computer);
 
+  const changeTurn = (foundWord) => {
+    setCurrentWord(foundWord);
+    setWhoIsTurn(whoIsTurn === PLAYERS.User ? PLAYERS.Computer : PLAYERS.User);
+    spokenWords.current.push(foundWord);
+  };
   return (
     <GameManagerContext.Provider
       value={{
@@ -18,6 +23,7 @@ export const GameManagerProvider = ({ children }) => {
         whoIsTurn,
         setWhoIsTurn,
         spokenWords,
+        changeTurn,
       }}
     >
       {children}

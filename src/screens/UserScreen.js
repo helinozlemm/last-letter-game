@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import { PLAYERS, useGameManagerContext } from "../context/GameManagerContext";
+import { useGameManagerContext } from "../context/GameManagerContext";
 
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const UserScreen = () => {
-  const { setWhoIsTurn, setCurrentWord, spokenWords } = useGameManagerContext();
+  const { changeTurn } = useGameManagerContext();
 
   useEffect(() => {
     const mic = new SpeechRecognition();
@@ -20,9 +20,7 @@ const UserScreen = () => {
       const result = event.results[0][0].transcript;
       console.log("user   " + result);
       mic.stop();
-      spokenWords.current.push(result);
-      setCurrentWord(result);
-      setWhoIsTurn(PLAYERS.Computer);
+      changeTurn(result);
     };
 
     mic.onspeechend = () => {
@@ -36,7 +34,7 @@ const UserScreen = () => {
       mic.stop();
       mic.abort();
     };
-  }, [setCurrentWord, setWhoIsTurn, spokenWords]);
+  }, [changeTurn]);
   return <div>User Screen</div>;
 };
 
