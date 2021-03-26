@@ -3,15 +3,33 @@ import { useGameManagerContext } from "../context/GameManagerContext";
 import { PLAYERS } from "../context/GameManagerContext";
 import { findLastWord } from "../utils/FindLastWord";
 
-const ComputerScreen = () => {
-  const { setWhoIsTurn, setCurrentWord, currentWord } = useGameManagerContext();
-  useEffect(() => {
-    const foundWord = findLastWord(currentWord);
+const SpeechSynth = window.speechSynthesis;
+const computerSpeak = new SpeechSynthesisUtterance();
+computerSpeak.lang = "tr-TR";
 
-    console.log(`{comp} : ${foundWord} ${currentWord}`);
-    setCurrentWord(foundWord);
-    setWhoIsTurn(PLAYERS.User);
-  }, [currentWord, setWhoIsTurn, setCurrentWord]);
+const ComputerScreen = () => {
+  const {
+    setWhoIsTurn,
+    setCurrentWord,
+    currentWord,
+    spokenWords,
+  } = useGameManagerContext();
+
+  useEffect(() => {
+    const foundWord = findLastWord(currentWord, spokenWords);
+
+    computerSpeak.text = foundWord;
+    SpeechSynth.speak(computerSpeak);
+
+    computerSpeak.onend = function () {
+      console.log(`{comp} : ${foundWord}`);
+
+      setCurrentWord(foundWord);
+      setWhoIsTurn(PLAYERS.User);
+      spokenWords.current.push(foundWord);
+    };
+  }, [currentWord, setWhoIsTurn, setCurrentWord, spokenWords]);
+
   return <div>Compt screen</div>;
 };
 

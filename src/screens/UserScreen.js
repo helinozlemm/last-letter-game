@@ -5,7 +5,7 @@ const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const UserScreen = () => {
-  const { setWhoIsTurn, setCurrentWord } = useGameManagerContext();
+  const { setWhoIsTurn, setCurrentWord, spokenWords } = useGameManagerContext();
 
   useEffect(() => {
     const mic = new SpeechRecognition();
@@ -17,10 +17,12 @@ const UserScreen = () => {
     mic.start();
 
     mic.onresult = (event) => {
-      console.log("user   " + event.results[0][0].transcript);
+      const result = event.results[0][0].transcript;
+      console.log("user   " + result);
       mic.stop();
+      spokenWords.current.push(result);
+      setCurrentWord(result);
       setWhoIsTurn(PLAYERS.Computer);
-      setCurrentWord(event.results[0][0].transcript);
     };
 
     mic.onspeechend = () => {
@@ -34,7 +36,7 @@ const UserScreen = () => {
       mic.stop();
       mic.abort();
     };
-  }, [setCurrentWord, setWhoIsTurn]);
+  }, [setCurrentWord, setWhoIsTurn, spokenWords]);
   return <div>User Screen</div>;
 };
 

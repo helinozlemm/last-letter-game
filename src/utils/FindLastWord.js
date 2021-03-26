@@ -7,9 +7,10 @@ const findRandomLetter = () => {
   return turkishAlphabet[getRandomInt(0, turkishAlphabet.length - 1)];
 };
 
-export const findLastWord = (currentWord) => {
+export const findLastWord = (currentWord, spokenWords) => {
   const lastLetter = currentWord.slice(-1) || findRandomLetter();
   const found = data.find((name) => {
+    if (spokenWords.current.includes(name)) return false;
     return name[0] === lastLetter;
   });
 
