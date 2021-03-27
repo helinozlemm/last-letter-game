@@ -18,7 +18,7 @@ export const GameManagerProvider = ({ children, setCurrentScreen }) => {
       setWhoIsTurn(
         whoIsTurn === PLAYERS.User ? PLAYERS.Computer : PLAYERS.User
       );
-      spokenWords.current.push(foundWord);
+      spokenWords.current.push(foundWord.toLocaleLowerCase("tr-TR"));
     } else {
       setCurrentScreen(SCREENS.GameOver);
     }
