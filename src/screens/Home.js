@@ -4,7 +4,7 @@ import { SCREENS } from "../components/Router";
 const Home = ({ setCurrentScreen }) => {
   return (
     <div>
-      <button onClick={() => setCurrentScreen(SCREENS.GameScreen)}>
+      <button onClick={() => setCurrentScreen(SCREENS.MicPermission)}>
         Start Game
       </button>
     </div>

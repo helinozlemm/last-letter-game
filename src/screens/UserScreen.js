@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import GameLoop from "../components/GameLoop";
 import { useGameManagerContext } from "../context/GameManagerContext";
 
 const SpeechRecognition =
@@ -35,7 +36,12 @@ const UserScreen = () => {
       mic.abort();
     };
   }, [changeTurn]);
-  return <div>User Screen</div>;
+  return (
+    <div>
+      User Screen
+      <GameLoop></GameLoop>;
+    </div>
+  );
 };
 
 export default UserScreen;

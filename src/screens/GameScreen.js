@@ -5,10 +5,11 @@ import UserScreen from "./UserScreen";
 import { PLAYERS } from "../context/GameManagerContext";
 
 const GameScreen = () => {
-  const { whoIsTurn } = useGameManagerContext();
+  const { whoIsTurn, currentWord } = useGameManagerContext();
   return (
     <div>
       {whoIsTurn === PLAYERS.Computer ? <ComputerScreen /> : <UserScreen />}
+      {currentWord}
     </div>
   );
 };
