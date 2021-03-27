@@ -12,6 +12,11 @@ export const GameManagerProvider = ({ children, setCurrentScreen }) => {
 
   const [whoIsTurn, setWhoIsTurn] = useState(PLAYERS.Computer);
 
+  const timeIsOver = () => {
+    console.log("Oyun bitti ");
+    setCurrentScreen(SCREENS.GameOver);
+  };
+
   const changeTurn = (foundWord) => {
     if (CheckIsValid(currentWord, foundWord, spokenWords)) {
       setCurrentWord(foundWord);
@@ -32,6 +37,7 @@ export const GameManagerProvider = ({ children, setCurrentScreen }) => {
         setWhoIsTurn,
         spokenWords,
         changeTurn,
+        timeIsOver,
       }}
     >
       {children}

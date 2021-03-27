@@ -3,6 +3,7 @@ import { GameManagerProvider } from "../context/GameManagerContext";
 import GameOver from "../screens/GameOver";
 import GameScreen from "../screens/GameScreen";
 import Home from "../screens/Home";
+import GameLoop from "./GameLoop";
 
 export const SCREENS = {
   home: 1,
@@ -21,7 +22,7 @@ const Router = () => {
       case SCREENS.GameScreen:
         return (
           <GameManagerProvider setCurrentScreen={setCurrentScreen}>
-            <GameScreen />
+            <GameScreen></GameScreen> <GameLoop></GameLoop>
           </GameManagerProvider>
         );
       case SCREENS.GameOver:
