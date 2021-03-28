@@ -9,7 +9,7 @@ const GameScreen = () => {
   return (
     <div>
       {whoIsTurn === PLAYERS.Computer ? <ComputerScreen /> : <UserScreen />}
-      {currentWord}
+      <h3 className="mt-5"> {currentWord}</h3>
     </div>
   );
 };

@@ -30,7 +30,7 @@ const ComputerScreen = () => {
     };
   }, [currentWord, changeTurn, spokenWords]);
 
-  return <div>Compt screen</div>;
+  return <div></div>;
 };
 
 export default ComputerScreen;

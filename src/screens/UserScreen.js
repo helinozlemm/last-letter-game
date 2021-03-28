@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import GameLoop from "../components/GameLoop";
+import GameLoop from "../components/GameLoop/GameLoop";
 import { useGameManagerContext } from "../context/GameManagerContext";
 
 const SpeechRecognition =
@@ -38,8 +38,7 @@ const UserScreen = () => {
   }, [changeTurn]);
   return (
     <div>
-      User Screen
-      <GameLoop></GameLoop>;
+      <GameLoop />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Router from "./components/Router";
 import { findLastWord } from "./utils/FindLastWord";
+import GameLoop from "../src/components/GameLoop/GameLoop.css";
 
 function App() {
   return (
