@@ -6,7 +6,7 @@ const SpeechSynth = window.speechSynthesis;
 const computerSpeak = new SpeechSynthesisUtterance();
 computerSpeak.lang = "tr-TR";
 
-const ComputerScreen = () => {
+const ComputerScreen = ({ setCurrentScreen }) => {
   const { currentWord, spokenWords, changeTurn } = useGameManagerContext();
 
   const computerIsPlayed = useRef(false);

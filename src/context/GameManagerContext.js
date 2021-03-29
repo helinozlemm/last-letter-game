@@ -17,15 +17,30 @@ export const GameManagerProvider = ({ children, setCurrentScreen }) => {
     setCurrentScreen(SCREENS.GameOver);
   };
 
+  const losePercent = () => {
+    let random = Math.floor(Math.random() * 101);
+    console.log("RANDOM" + random);
+    return random;
+  };
+
   const changeTurn = (foundWord) => {
-    if (CheckIsValid(currentWord, foundWord, spokenWords)) {
-      setCurrentWord(foundWord);
-      setWhoIsTurn(
-        whoIsTurn === PLAYERS.User ? PLAYERS.Computer : PLAYERS.User
-      );
+    if (
+      losePercent() <= 10 &&
+      spokenWords.current.length > 0 &&
+      whoIsTurn === PLAYERS.User
+    ) {
       spokenWords.current.push(foundWord.toLocaleLowerCase("tr-TR"));
+      setCurrentScreen(SCREENS.GameWon);
     } else {
-      setCurrentScreen(SCREENS.GameOver);
+      if (CheckIsValid(currentWord, foundWord, spokenWords)) {
+        setCurrentWord(foundWord);
+        setWhoIsTurn(
+          whoIsTurn === PLAYERS.User ? PLAYERS.Computer : PLAYERS.User
+        );
+        spokenWords.current.push(foundWord.toLocaleLowerCase("tr-TR"));
+      } else {
+        setCurrentScreen(SCREENS.GameOver);
+      }
     }
   };
   return (

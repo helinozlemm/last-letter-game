@@ -3,14 +3,14 @@ import { useGameManagerContext } from "../context/GameManagerContext";
 import { Button } from "reactstrap";
 import { SCREENS } from "../components/Router";
 
-const GameOver = ({setCurrentScreen}) => {
+const GameWon = ({setCurrentScreen}) => {
   const { spokenWords } = useGameManagerContext();
   return (
     <div className="mt-5">
       <h3>
         Bildiğin kelime sayısı : {parseInt(spokenWords.current.length / 2)}
       </h3>
-      <h3>Oyunu kaybettin!</h3>
+      <h3>Tebrikler! Oyunu kazandın!</h3>
       <Button
         className="mt-4"
         color="success"
@@ -22,4 +22,4 @@ const GameOver = ({setCurrentScreen}) => {
   );
 };
 
-export default GameOver;
+export default GameWon;

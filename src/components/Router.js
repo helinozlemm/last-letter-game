@@ -5,6 +5,7 @@ import GameOver from "../screens/GameOver";
 import GameScreen from "../screens/GameScreen";
 import Home from "../screens/Home";
 import MicPermission from "../screens/MicPermission";
+import GameWon from "../screens/GameWin";
 
 export const SCREENS = {
   home: 1,
@@ -12,6 +13,7 @@ export const SCREENS = {
   GameOver: 3,
   MicPermission: 4,
   NeedAccess: 5,
+  GameWon: 6,
 };
 
 const Router = () => {
@@ -32,6 +34,12 @@ const Router = () => {
         return (
           <GameManagerProvider>
             <GameOver setCurrentScreen={setCurrentScreen}></GameOver>
+          </GameManagerProvider>
+        );
+      case SCREENS.GameWon:
+        return (
+          <GameManagerProvider>
+            <GameWon setCurrentScreen={setCurrentScreen}></GameWon>
           </GameManagerProvider>
         );
 

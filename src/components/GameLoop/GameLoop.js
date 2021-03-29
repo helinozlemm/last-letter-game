@@ -19,9 +19,9 @@ const GameLoop = () => {
   return (
     <div className="d-flex mt-5 align-items-center justify-content-center">
       <Spinner size="sm" color="dark" className="mr-2"></Spinner>
-      <div class="timer">
+      <div className="timer">
         <div>00:0</div>
-        <div>{timer}</div>
+        <div id="second">{timer}</div>
       </div>
     </div>
   );

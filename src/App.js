@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Router from "./components/Router";
 import { findLastWord } from "./utils/FindLastWord";
