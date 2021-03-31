@@ -13,13 +13,11 @@ export const GameManagerProvider = ({ children, setCurrentScreen }) => {
   const [whoIsTurn, setWhoIsTurn] = useState(PLAYERS.Computer);
 
   const timeIsOver = () => {
-    console.log("Oyun bitti ");
     setCurrentScreen(SCREENS.GameOver);
   };
 
   const losePercent = () => {
     let random = Math.floor(Math.random() * 101);
-    console.log("RANDOM" + random);
     return random;
   };
 

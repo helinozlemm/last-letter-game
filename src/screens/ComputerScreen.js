@@ -16,7 +16,6 @@ const ComputerScreen = ({ setCurrentScreen }) => {
     computerIsPlayed.current = true;
 
     const foundWord = findLastWord(currentWord, spokenWords);
-    console.log(`{comp} : ${foundWord}`);
 
     computerSpeak.text = foundWord;
     SpeechSynth.speak(computerSpeak);

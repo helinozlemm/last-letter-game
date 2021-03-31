@@ -19,7 +19,6 @@ const UserScreen = () => {
 
     mic.onresult = (event) => {
       const result = event.results[0][0].transcript;
-      console.log("user   " + result);
       mic.stop();
       changeTurn(result);
     };
