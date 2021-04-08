@@ -1,4 +1,4 @@
-Last letter kelimenin son harfinden başlayan bir kelime oyunudur. Bilgisayar ve kullanıcı sırayla bir önce söylenen ismin son harfinden yeni bir isim türeterek birbirlerini yenmeye çalışırlar. Oyunun başlangıcında bilgisayar random bir kelime seçer ve ekrana gösterir. Kullanıcının 8 saniye içinde bilgisayarın yazdığı ismin son harfiyle başlayan yeni bir isim söylemeniz bekler.
+Last letter kelimenin son harfinden başlayan bir kelime oyunudur. Bilgisayar ve kullanıcı sırayla bir önce söylenen ismin son harfinden yeni bir isim türeterek birbirlerini yenmeye çalışırlar. Oyunun başlangıcında bilgisayar random bir kelime seçer ve ekrana gösterir. Kullanıcının 8 saniye içinde bilgisayarın yazdığı ismin son harfiyle başlayan yeni bir isim söylemenizi bekler.
 
 Örneğin;
 
